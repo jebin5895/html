@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OS Midterm Quizlet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Responsive document styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .document-view {
+            font-family: Arial, sans-serif;
+            max-width: 90%;
+            margin: 10vh auto;
+            padding: 20px;
+            background: pink;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.5s ease-out;
+        }
+
+        .document-header {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1em;
+            background-color: #0047AB;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Prank styling */
+        .prank-content {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #f0f0f0, #d3d3d3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .prank-title {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in forwards;
+            animation-delay: 1s;
+        }
+
+        .lol-emoji {
+            font-size: 60px;
+            margin: 20px auto;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+
+        .prank-message {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in forwards;
+            animation-delay: 2s;
+        }
+
+        .surprise-btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #0047AB;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: fadeIn 2s ease-in forwards;
+            animation-delay: 3s;
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.1);
+            background-color: #ff4d4d;
+        }
+
+        .surprise-message {
+            font-size: 1.3em;
+            color: #ff1a75;
+            margin-top: 20px;
+            min-height: 50px;
+        }
+
+        .floating-lols {
+            position: fixed;
+            font-size: 24px;
+            animation: float 6s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Initial document view -->
+    <div class="document-view" id="documentView">
+        <div class="document-header">
+            <h1>OS Midterm Quizlet</h1>
+            <p>Chapters 1, 2, 8, and 9</p>
+            <p>Last Updated: February 14, 2025</p>
+        </div>
+        <p>Link to CSE 3320 GitHub repository and quizlet.</p>
+        <button onclick="startTransformation()">GitHub Repo and Quizlet</button>
+    </div>
+
+    <!-- Prank content (initially hidden) -->
+    <div class="prank-content" id="prankContent">
+        <h1 class="prank-title">SIKEEEE YOU THOUGHT LOLL 🤡</h1>
+        <div class="lol-emoji">😂</div>
+        <div class="prank-message">
+            Hey buddy,
+            <br><br>
+            You really believed this was some review deck LMAOO <br>
+            It's okay, your time will "eventually" come too 
+            <br><br>
+            P.S. You really thought goofyyyy !! 🤣
+        </div>
+        <button class="surprise-btn" onclick="showSurprise()">Click this for actually sweet messages! 🫶</button>
+        <div class="surprise-message" id="surpriseMessage"></div>
+    </div>
+
+    <script>
+        const surprises = [
+            "if this is abi reading this message, i am setting up the connection with Samuel now",
+            "I know deep down you still like him :) ",
+            "JUST ADMIT YOU STILL ARE DOWN BAD FOR HIM 💅"
+        ];
+
+        function startTransformation() {
+            const docView = document.getElementById('documentView');
+            const prankContent = document.getElementById('prankContent');
+            
+            docView.style.opacity = '0';
+            setTimeout(() => {
+                docView.style.display = 'none';
+                prankContent.style.display = 'flex';
+                startFloatingLOLs();
+            }, 500);
+        }
+
+        function showSurprise() {
+            const message = surprises[Math.floor(Math.random() * surprises.length)];
+            document.getElementById('surpriseMessage').textContent = message;
+            createFloatingLOL();
+        }
+
+        function createFloatingLOL() {
+            const lol = document.createElement('div');
+            lol.innerHTML = '😂';
+            lol.className = 'floating-lols';
+            lol.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(lol);
+            
+            setTimeout(() => {
+                lol.remove();
+            }, 6000);
+        }
+
+        function startFloatingLOLs() {
+            setInterval(createFloatingLOL, 2000);
+        }
+    </script>
+</body>
+</html>
